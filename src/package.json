@@ -1,0 +1,8 @@
+{
+  "name": "electron-reactjs-boilerplate",
+  "version": "0.0",
+  "type": "module",
+  "description": "a reactJS + electron boilerlate",
+  "author": "boly38",
+  "main": "main_electron.js"
+}

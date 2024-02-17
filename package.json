@@ -1,0 +1,98 @@
+{
+  "name": "electron-reactjs-boilerplate",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "a reactJS app using electron as exe packaging",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boly38/electron-reactjs-boilerplate"
+  },
+  "keywords": [
+    "electron",
+    "reactjs",
+    "boilerplate"
+  ],
+  "author": "boly38",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/boly38/electron-reactjs-boilerplate/issues"
+  },
+  "homepage": "https://github.com/boly38/electron-reactjs-boilerplate#readme",
+  "main": "src/main_electron.js",
+  "scripts": {
+    "dev:front-end": "npm start --prefix front-end",
+    "build": "npm-run-all build:*",
+    "build:clean-package": "rm -rf ./ui ./front-end/build",
+    "build:front-end": "cd front-end&& npm run build && cd ..",
+    "build:package-front-end": "cp -r ./front-end/build ./ui",
+    "start": "npm run build&& npm run start-from-src",
+    "start-from-src": "chcp.com 65001&& electron --no-sandbox ./src/",
+    "start-from-src-no-dev": "chcp.com 65001&& electron --no-sandbox --disable-dev-mode ./src/",
+    "package:binary": "electron-builder build --publish never",
+    "howto:unpack-binary": "echo npx @electron/asar extract dist/win-unpacked/resources/app.asar ./___tmp/",
+    "howto:run_unpacked_exe": "echo please now run: ./dist/win-unpacked/electron-reactjs-boilerplate.exe",
+    "howto:run_setup": "echo please now run: ./dist/electron-reactjs-boilerplate\\ Setup\\ x.y.z.exe - windows installation result will be: %AppData%\\..\\Local\\Programs\\electron-reactjs-boilerplate",
+    "package": "npm run build&& npm run package:binary&& npm run howto:run_setup",
+    "test": "echo windows test&& set NODE_ENV=test&& c8 --reporter text --reporter=lcov --lines 60 electron-mocha --no-sandbox --trace-warnings --exit --timeout 180000 --unhandled-rejections=strict tests/ci/*.test.js",
+    "tst": "echo windows %TST% test&& set NODE_ENV=test&& c8 --reporter text --reporter=lcov --lines 60 electron-mocha --no-sandbox --trace-warnings --exit --timeout 180000 --unhandled-rejections=strict tests/ci/%TST%.test.js",
+    "ci-test": "echo linux ci-test&& export NODE_ENV=githubaction&& c8 --reporter text --reporter=lcov --lines 60 electron-mocha --no-sandbox --trace-warnings --exit --timeout 180000 --unhandled-rejections=strict tests/ci/*.test.js"
+  },
+  "___doc___scripts": {
+    "__doc_start__cp": "chcp.com 65001 to fix emoji in console - https://github.com/electron/electron/issues/7137",
+    "__doc_start__gpu": "--no-sandbox to fix 'GPU process isn't usable. Goodbye.' electron error",
+    "__doc_howto__unpack": "https://stackoverflow.com/questions/38523617/how-to-unpack-an-asar-file"
+  },
+  "___doc___dependencies": {
+    "typescript": "needed by node-dependency-injection for exe building !??"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.10",
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "node-dependency-injection": "^3.1.2",
+    "typescript": "^5.3.3",
+    "uuid": "^9.0.1"
+  },
+  "____dev_doc": {
+    "electron": " \"29.0.0-alpha.8\" unable to find zip : ⨯ cannot resolve https://github.com/electron/electron/releases/download/v29.0.0/electron-v29.0.0-win32-x64.zip: status code 404"
+  },
+  "devDependencies": {
+    "c8": "^9.1.0",
+    "chai": "^4.4.1",
+    "chai-http": "^4.4.0",
+    "deep-equal-in-any-order": "^2.0.6",
+    "electron": "28.2.1",
+    "electron-builder": "^24.9.1",
+    "electron-mocha": "^12.2.0",
+    "mocha": "^10.3.0",
+    "npm-run-all": "4.1.5",
+    "supertest": "^6.3.4",
+    "webpack": "^5.88.2",
+    "webpack-bundle-analyzer": "^4.9.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
+    "webpack-merge": "^5.9.0"
+  },
+  "build": {
+    "appId": "electron.reactjs.boilerplate.boly38.github",
+    "productName": "electron-reactjs-boilerplate",
+    "files": [
+      "src/**/*",
+      "ui/**/*",
+      "node_modules/**/*"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

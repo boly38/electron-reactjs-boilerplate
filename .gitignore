@@ -1,0 +1,12 @@
+.idea
+*.iml
+node_modules/
+dist/
+ui/
+coverage/
+
+# draft
+___tmp/
+
+# secrets
+*.private.*

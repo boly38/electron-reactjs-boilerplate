@@ -1,0 +1,49 @@
+/** custom variable **/
+:root {
+    --cbBgform: rgb(209, 218, 248);
+    --cbTextDark: #d50654;
+    --cbTextLight: #FDFDC9B2;
+    --cbTitleForeground: #f1e3cf;
+    --cbStateForeground:rgb(73, 71, 67, .6);
+    --cbMargin: 5px;
+    --cbPadding: 5px;
+    --cbLeftRightBorder: 2px solid lightgrey !important;
+    --cbDebugBorder: 0px dashed #5b0727;
+}
+.card {
+    border-radius: 5px;
+    border-bottom: var(--cbLeftRightBorder);
+    border-right: var(--cbLeftRightBorder);
+}
+
+.card-title {
+    background-color: var(--cbTitleForeground);
+    padding: var(--cbPadding);
+}
+.cbBar {
+    height: 100px;
+}
+.myApp {
+    background-color: var(--cbBgform) !important;
+    display: block;
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    border: var(--cbDebugBorder);
+}
+
+.alignCenter {
+    text-align: center;
+}
+.floatRight {
+    float: right;
+}
+
+#cMainContent {
+    float: left;
+    margin: var(--cbMargin);
+    vertical-align: top;
+    min-height: 300px;
+    width: 80%;
+    border: var(--cbDebugBorder);
+}

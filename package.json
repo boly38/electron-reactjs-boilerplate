@@ -75,8 +75,13 @@
     "webpack-merge": "^5.9.0"
   },
   "build": {
-    "appId": "electron.reactjs.boilerplate.boly38.github",
+    "appId": "com.github.boly38.electron-reactjs-boilerplate",
     "productName": "electron-reactjs-boilerplate",
+    "copyright": "Copyright © 2024 boly38",
+    "win": {
+      "target": "portable",
+      "icon": "../ui/favicon.ico"
+    },
     "files": [
       "src/**/*",
       "ui/**/*",
